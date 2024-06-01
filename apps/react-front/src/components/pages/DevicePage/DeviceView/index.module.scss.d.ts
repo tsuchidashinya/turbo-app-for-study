@@ -1,5 +1,6 @@
 export type Styles = {
-  table: string
+  list: string
+  'serch-form': string
 }
 
 export type ClassNames = keyof Styles

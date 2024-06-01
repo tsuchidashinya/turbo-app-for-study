@@ -1,6 +1,6 @@
 import { DeviceView } from './DeviceView'
 
-export const DevicePageComponent = () => {
+export const DevicePage = () => {
   return (
     <>
       <DeviceView />
