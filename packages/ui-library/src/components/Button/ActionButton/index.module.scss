@@ -1,0 +1,15 @@
+.ActionButton {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  border: none;
+  border-radius: 0.5rem;
+
+  &:hover {
+    background-color: #d9d9d9;
+  }
+}
+
+.has-border {
+  border: 0.1rem #a3a3a3 solid;
+}

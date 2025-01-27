@@ -1,9 +1,9 @@
-@use '../../utils/common.scss';
-@use '../../utils/color_base';
+@use '../../../utils/common.scss';
+@use '../../../utils/color_base';
 .button {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   cursor: pointer;
   display: inline-block;
   line-height: 1;
