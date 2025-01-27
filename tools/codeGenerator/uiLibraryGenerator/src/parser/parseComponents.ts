@@ -55,7 +55,8 @@ const parseComponents = (csvFilePath: string): Promise<ComponentData[]> => {
               ? rowData[columnIndex.description]
               : undefined;
           const defaultData =
-            rowData.length > columnIndex.default
+            rowData.length > columnIndex.default &&
+            rowData[columnIndex.default].trim().length > 0
               ? rowData[columnIndex.default]
               : undefined;
           const required =

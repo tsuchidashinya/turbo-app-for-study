@@ -1,5 +1,4 @@
-import { ComponentData } from "../../parser/ComponentData";
-import { convertUpperCamelCase } from "../../utils/convertUpperCamelCase";
+import { ComponentData } from "../parser/ComponentData";
 import {
   COMPONENT_TEMPLATE,
   DEFAULT_TEMPLATE,
@@ -12,7 +11,8 @@ import {
   STATE_TEMPLATE,
   STATE_TYPE_TEMPLATE,
   TYPE_TEMPLATE,
-} from "./template";
+} from "../template/component";
+import { convertUpperCamelCase } from "../utils/convertUpperCamelCase";
 
 const getPropsCode = (propsList: ComponentData["props"]) => {
   return propsList

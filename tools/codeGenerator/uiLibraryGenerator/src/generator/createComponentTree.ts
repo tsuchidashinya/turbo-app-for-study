@@ -34,10 +34,6 @@ const createComponentTree = (components: ComponentData[]): TreeNode => {
   };
 
   for (const component of components) {
-    if (component.children.length === 0) {
-      continue;
-    }
-
     // 新しいノードの作成
     const newNode: TreeNode = {
       name: component.name,
