@@ -50,7 +50,7 @@ const Map = () => {
   };
 
   const handleMouseMove = async (
-    e: React.MouseEvent<HTMLCanvasElement, MouseEvent>
+    e: React.MouseEvent<HTMLCanvasElement, MouseEvent>,
   ) => {
     if (isMouseDown) {
       worldPos.x += (mousePosition.x - e.nativeEvent.offsetX) * rate;
@@ -141,7 +141,7 @@ const Map = () => {
     const leftTopTilePos = tile2World(
       leftTopTile.x,
       leftTopTile.y,
-      leftTopTile.z
+      leftTopTile.z,
     );
     const rightBottomPos = canvas2World({ x: CANVAS_WIDTH, y: CANVAS_HEIGHT });
 

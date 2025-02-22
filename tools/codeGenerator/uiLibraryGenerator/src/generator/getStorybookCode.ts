@@ -12,7 +12,7 @@ const getArgs = (props: ComponentData["props"]) => {
       return (
         ARGS_TEMPLATE.replace(/\{\$NAME\}/g, name).replace(
           /\{\$DEFAULT\}/g,
-          defaultValue ?? "undefined"
+          defaultValue ?? "undefined",
         ) + (index < props.length - 1 ? "," : "")
       );
     })
@@ -24,7 +24,7 @@ const getStoryObject = (props: ComponentData["props"]) => {
     .map(({ name, default: defaultValue }) => {
       return STORY_OBJECT_TEMPLATE.replace(
         /\{\$ARG_CAMEL_NAME\}/,
-        convertUpperCamelCase(name)
+        convertUpperCamelCase(name),
       )
         .replace(/\{\$ARG\}/, name)
         .replace(/\{\$DEFAULT\}/, defaultValue ?? "undefined");
@@ -35,7 +35,7 @@ const getStoryObject = (props: ComponentData["props"]) => {
 const getStorybookCode = (componentData: ComponentData) => {
   return STORYBOOK_TEMPLATE.replace(
     /\{\$NAME\}/g,
-    convertUpperCamelCase(componentData.name)
+    convertUpperCamelCase(componentData.name),
   )
     .replace(/\{\$ARGS\}/g, getArgs(componentData.props))
     .replace(/\{\$STORY_OBJECT\}/g, getStoryObject(componentData.props));

@@ -12,13 +12,13 @@ const outputPath =
 ////////
 
 const result = execSync(
-  `cd ../pageComponentCodeGenerator && yarn generate ${componentImportPath} ${outputPath}`
+  `cd ../pageComponentCodeGenerator && yarn generate ${componentImportPath} ${outputPath}`,
 );
 console.log(result.toString());
 execSync(
-  `cd ../functionCodeGenerator && yarn generate ${actionImportPath} ${outputPath}/controller/actions`
+  `cd ../functionCodeGenerator && yarn generate ${actionImportPath} ${outputPath}/controller/actions`,
 );
 fs.writeFileSync(`${outputPath}/controller/state.ts`, "");
 execSync(
-  `cd ../functionCodeGenerator && yarn generate ${selectorImportPath} ${outputPath}/controller/selectors`
+  `cd ../functionCodeGenerator && yarn generate ${selectorImportPath} ${outputPath}/controller/selectors`,
 );

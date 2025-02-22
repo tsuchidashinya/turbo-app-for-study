@@ -7,7 +7,7 @@ type TreeNode = {
 
 const searchNode = (
   componentTree: TreeNode,
-  name: string
+  name: string,
 ): TreeNode | undefined => {
   if (componentTree.name === name) {
     return componentTree;
@@ -52,7 +52,7 @@ const createComponentTree = (components: ComponentData[]): TreeNode => {
     // Rootに子ノードがあれば移動する
     for (const newChild of newNode.children) {
       const idx = componentTree.children.findIndex(
-        (child) => newChild.name === child.name
+        (child) => newChild.name === child.name,
       );
       if (idx !== -1) {
         newNode.children = componentTree.children[idx].children;

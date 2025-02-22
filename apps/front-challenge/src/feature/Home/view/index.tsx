@@ -1,14 +1,15 @@
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import styles from "./index.module.scss";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/map");
-  };
   return (
     <div className={styles.home}>
-      <button onClick={handleClick}>Mapへ</button>
+      <Link to="/map" className={styles.link}>
+        Mapアプリ
+      </Link>
+      <Link to="/slide" className={styles.link}>
+        Slideアプリ
+      </Link>
     </div>
   );
 };

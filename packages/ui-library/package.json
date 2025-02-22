@@ -17,6 +17,8 @@
     "type": "git"
   },
   "dependencies": {
+    "@mui/icons-material": "^6.4.1",
+    "@mui/material": "^6.4.1",
     "date-fns": "^3.6.0",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
@@ -24,9 +26,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.23.2",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/material": "^5.14.20",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
     "@mui/x-data-grid": "^6.18.4",
     "@packages/typescript": "*",
     "@storybook/addon-essentials": "^7.5.2",
@@ -35,7 +36,6 @@
     "@storybook/blocks": "^7.5.2",
     "@storybook/react": "^7.5.2",
     "@storybook/react-vite": "^7.5.2",
-    "@storybook/testing-library": "^0.2.2",
     "@types/node": "^20.8.10",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",

@@ -12,14 +12,14 @@ const generateFromTree = (
   treeNode: TreeNode,
   components: ComponentData[],
   destPath: string,
-  exclude: ("component" | "storybook" | "scss")[]
+  exclude: ("component" | "storybook" | "scss")[],
 ) => {
   if (treeNode.children.length === 0) {
     return;
   }
   for (const childNode of treeNode.children) {
     const childComponent = components.find(
-      (component) => component.name === childNode.name
+      (component) => component.name === childNode.name,
     );
     if (childComponent) {
       const dirPath = `${destPath}/${childComponent.name}`;
@@ -42,7 +42,7 @@ const generateFromTree = (
         childNode,
         components,
         `${destPath}/${childNode.name}`,
-        exclude
+        exclude,
       );
     }
   }
@@ -51,20 +51,20 @@ const generateFromTree = (
 const generateComponent = (
   destPath: string,
   componentList: ComponentData[],
-  exclude: ("component" | "storybook" | "scss")[]
+  exclude: ("component" | "storybook" | "scss")[],
 ) => {
   const componentTree = createComponentTree(componentList);
   generateFromTree(componentTree, componentList, destPath, exclude);
 
   for (const rootChild of componentTree.children) {
     const component = componentList.find(
-      (component) => component.name === rootChild.name
+      (component) => component.name === rootChild.name,
     );
     if (component && !exclude.includes("storybook")) {
       const storybookCode = getStorybookCode(component);
       fs.writeFileSync(
         `${destPath}/${rootChild.name}/index.stories.tsx`,
-        storybookCode
+        storybookCode,
       );
     }
   }

@@ -12,7 +12,7 @@ const getTypeCode = (types: FunctionData["types"]) => {
     .map(({ name, type }) => {
       return TYPE_TEMPLATE.replace(/\{\$NAME\}/g, name).replace(
         /\{\$TYPE\}/g,
-        type
+        type,
       );
     })
     .join("\n");
@@ -20,7 +20,7 @@ const getTypeCode = (types: FunctionData["types"]) => {
 
 const getDescriptionCode = (
   description: FunctionData["description"],
-  args: FunctionData["args"]
+  args: FunctionData["args"],
 ) => {
   return DESCRIPTION_TEMPLATE.replace(
     /\{\$ARG_DESCRIPTION\}/g,
@@ -28,10 +28,10 @@ const getDescriptionCode = (
       .map(({ name, description }) => {
         return ARG_DESCRIPTION_TEMPLATE.replace(/\{\$NAME\}/g, name).replace(
           /\{\$DESCRIPTION\}/g,
-          description ?? ""
+          description ?? "",
         );
       })
-      .join("\n")
+      .join("\n"),
   ).replace(/\{\$DESCRIPTION\}/g, description ?? "");
 };
 
@@ -42,13 +42,13 @@ const getArgsCode = (args: FunctionData["args"]) => {
         return (
           ARG_TEMPLATE.replace(/\{\$NAME\}/g, name).replace(
             /\{\$TYPE\}/g,
-            type
+            type,
           ) + ","
         );
       }
       return ARG_TEMPLATE.replace(/\{\$NAME\}/g, name).replace(
         /\{\$TYPE\}/g,
-        type
+        type,
       );
     })
     .join("\n");

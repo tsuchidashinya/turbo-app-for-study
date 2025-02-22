@@ -56,5 +56,8 @@
     "apps/*",
     "packages/*",
     "packages/**/*"
-  ]
+  ],
+  "dependencies": {
+    "@emotion/styled": "^11.14.0"
+  }
 }

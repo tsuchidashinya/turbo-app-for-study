@@ -22,7 +22,7 @@ const getPropsCode = (propsList: ComponentData["props"]) => {
       return PROPS_TEMPLATE.replace(/\{\$NAME\}/g, name)
         .replace(
           /\{\$PROPS_TYPE\}/g,
-          type ? PROPS_TYPE_TEMPLATE.replace(/\{\$TYPE\}/g, type) : ""
+          type ? PROPS_TYPE_TEMPLATE.replace(/\{\$TYPE\}/g, type) : "",
         )
         .replace(/\{\$REQUIRED\}/g, required ? "" : "?")
         .replace(
@@ -30,9 +30,9 @@ const getPropsCode = (propsList: ComponentData["props"]) => {
           description
             ? PROPS_DESCRIPTION_TEMPLATE.replace(
                 /\{\$DESCRIPTION\}/g,
-                description
+                description,
               )
-            : ""
+            : "",
         );
     })
     .join("\n");
@@ -47,9 +47,9 @@ const getInitialValue = (propsList: ComponentData["props"]) => {
           defaultValue
             ? DEFAULT_VALUE_TEMPLATE.replace(
                 /\{\$VALUE\}/g,
-                defaultValue ?? "undefined"
+                defaultValue ?? "undefined",
               )
-            : ""
+            : "",
         ) + (index < propsList.length - 1 ? "," : "")
       );
     })
@@ -63,7 +63,7 @@ const getStateCode = (stateList: ComponentData["states"]) => {
         .replace("{$SET_NAME}", `set${convertUpperCamelCase(name)}`)
         .replace(
           /\{\$STATE_TYPE\}/g,
-          type ? STATE_TYPE_TEMPLATE.replace(/\{\$TYPE\}/g, type) : ""
+          type ? STATE_TYPE_TEMPLATE.replace(/\{\$TYPE\}/g, type) : "",
         )
         .replace("{$DEFAULT}", defaultValue ?? "");
     })
@@ -75,7 +75,7 @@ const getTypeCode = (typeList: ComponentData["types"]) => {
     .map(({ name, type }) => {
       return TYPE_TEMPLATE.replace(/\{\$NAME\}/g, name).replace(
         /\{\$TYPE\}/g,
-        type ?? ""
+        type ?? "",
       );
     })
     .join("\n");
@@ -87,14 +87,14 @@ const getEventCode = (eventList: ComponentData["events"]) => {
       return EVENT_TEMPLATE.replace(/\{\$NAME\}/g, name)
         .replace(
           /\{\$ASYNC\}/g,
-          returnType?.includes("Promise") ? "async " : ""
+          returnType?.includes("Promise") ? "async " : "",
         )
         .replace(/\{\$ARG_TYPE\}/g, args ?? "")
         .replace(
           /\{\$RETURN_TYPE\}/g,
           returnType
             ? EVENT_RETURN_TYPE_TEMPLATE.replace(/\{\$TYPE\}/g, returnType)
-            : ""
+            : "",
         );
     })
     .join("\n");
@@ -119,7 +119,7 @@ const getChildImportCode = (children: ComponentData["children"]) => {
 const getComponentCode = (componentData: ComponentData) => {
   return COMPONENT_TEMPLATE.replace(
     /\{\$PROPS\}/g,
-    getPropsCode(componentData.props)
+    getPropsCode(componentData.props),
   )
     .replace(/\{\$NAME\}/g, convertUpperCamelCase(componentData.name))
     .replace(/\{\$SCSS_NAME\}/g, componentData.name)
@@ -127,7 +127,7 @@ const getComponentCode = (componentData: ComponentData) => {
     .replace(/\{\$CHILD_IMPORT\}/g, getChildImportCode(componentData.children))
     .replace(
       /\{\$CHILD_COMPONENT\}/g,
-      getChildComponentCode(componentData.children)
+      getChildComponentCode(componentData.children),
     )
     .replace(/\{\$STATE\}/g, getStateCode(componentData.states))
     .replace(/\{\$EVENT\}/g, getEventCode(componentData.events))

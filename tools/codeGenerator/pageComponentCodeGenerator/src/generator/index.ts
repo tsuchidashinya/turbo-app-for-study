@@ -10,14 +10,14 @@ const generateFromTree = (
   treeNode: TreeNode,
   components: ComponentData[],
 
-  destPath: string
+  destPath: string,
 ) => {
   if (treeNode.children.length === 0) {
     return;
   }
   for (const childNode of treeNode.children) {
     const childComponent = components.find(
-      (component) => component.name === childNode.name
+      (component) => component.name === childNode.name,
     );
     if (childComponent) {
       const dirPath = `${destPath}/${childComponent.name}`;
@@ -37,7 +37,7 @@ const generateFromTree = (
 
 const generateComponent = async (
   destPath: string,
-  componentList: ComponentData[]
+  componentList: ComponentData[],
 ) => {
   const componentTree = createComponentTree(componentList);
   const rootPath = `${destPath}/${componentTree.children[0].name}`;
@@ -50,7 +50,7 @@ const generateComponent = async (
 
   renameSync(
     `${destPath}/${componentTree.children[0].name}`,
-    `${destPath}/view`
+    `${destPath}/view`,
   );
 };
 

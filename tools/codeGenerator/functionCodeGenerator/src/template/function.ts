@@ -1,13 +1,13 @@
-const TYPE_TEMPLATE = `type {$NAME} = {$TYPE}`;
+const TYPE_TEMPLATE = `type {$NAME} = {$TYPE}`
 
-const ARG_DESCRIPTION_TEMPLATE = `* @param {$NAME} {$DESCRIPTION}`;
+const ARG_DESCRIPTION_TEMPLATE = `* @param {$NAME} {$DESCRIPTION}`
 
 const DESCRIPTION_TEMPLATE = `/**
  * {$DESCRIPTION}
  {$ARG_DESCRIPTION} 
- */`;
+ */`
 
-const ARG_TEMPLATE = `{$NAME}: {$TYPE}`;
+const ARG_TEMPLATE = `{$NAME}: {$TYPE}`
 
 const FUNCTION_TEMPLATE = `
 {$TYPE}
@@ -18,7 +18,7 @@ const {$NAME} = ({$ARGS}){$RETURN_TYPE} => {
 }
 
 export { {$NAME} }
-`;
+`
 
 export {
   ARG_DESCRIPTION_TEMPLATE,
@@ -26,4 +26,4 @@ export {
   DESCRIPTION_TEMPLATE,
   FUNCTION_TEMPLATE,
   TYPE_TEMPLATE,
-};
+}

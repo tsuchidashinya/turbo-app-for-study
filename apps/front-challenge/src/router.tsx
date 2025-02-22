@@ -2,6 +2,7 @@ import { createBrowserRouter, Route, Routes } from "react-router-dom";
 import { DefaultLayout } from "./common/view/DefaultLayout";
 import { Home } from "./feature/Home/view";
 import { Map } from "./feature/Map/view";
+import { SlidePage } from "./feature/Slide/view";
 
 const APP_ROUTES = [
   {
@@ -11,6 +12,10 @@ const APP_ROUTES = [
   {
     path: "/map",
     element: <Map />,
+  },
+  {
+    path: "/slide",
+    element: <SlidePage />,
   },
 ];
 

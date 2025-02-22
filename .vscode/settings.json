@@ -29,5 +29,6 @@
   "css.validate": false,
   "scss.validate": false,
   "javascript.format.enable": false,
-  "typescript.format.enable": false
+  "typescript.format.enable": false,
+  "prettier.semi": false
 }

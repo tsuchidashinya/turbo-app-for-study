@@ -1,18 +1,20 @@
-import { ComponentData } from "../parser/ComponentData";
+import { ComponentData } from "../parser/ComponentData"
 import {
   COMPONENT_TEMPLATE,
   DEFAULT_TEMPLATE,
   DEFAULT_VALUE_TEMPLATE,
+  DESCRIPTION_TEMPLATE,
   EVENT_RETURN_TYPE_TEMPLATE,
   EVENT_TEMPLATE,
   PROPS_DESCRIPTION_TEMPLATE,
+  PROPS_JSDOC_DESCRIPTION_TEMPLATE,
   PROPS_TEMPLATE,
   PROPS_TYPE_TEMPLATE,
   STATE_TEMPLATE,
   STATE_TYPE_TEMPLATE,
   TYPE_TEMPLATE,
-} from "../template/component";
-import { convertUpperCamelCase } from "../utils/convertUpperCamelCase";
+} from "../template/component"
+import { convertUpperCamelCase } from "../utils/convertUpperCamelCase"
 
 const getPropsCode = (propsList: ComponentData["props"]) => {
   return propsList
@@ -31,10 +33,26 @@ const getPropsCode = (propsList: ComponentData["props"]) => {
                 description
               )
             : ""
-        );
+        )
     })
-    .join("\n");
-};
+    .join("\n")
+}
+
+const getDescriptionCode = (
+  description: ComponentData["description"],
+  props: ComponentData["props"]
+) => {
+  return DESCRIPTION_TEMPLATE.replace(
+    /\{\$ARG_DESCRIPTION\}/g,
+    props
+      .map(({ name, description, type }) => {
+        return PROPS_JSDOC_DESCRIPTION_TEMPLATE.replace(/\{\$NAME\}/g, name)
+          .replace(/\{\$TYPE\}/g, type ?? "")
+          .replace(/\{\$DESCRIPTION\}/g, description ?? "")
+      })
+      .join("\n")
+  ).replace(/\{\$DESCRIPTION\}/g, description ?? "")
+}
 
 const getInitialValue = (propsList: ComponentData["props"]) => {
   return propsList
@@ -49,10 +67,10 @@ const getInitialValue = (propsList: ComponentData["props"]) => {
               )
             : ""
         ) + (index < propsList.length - 1 ? "," : "")
-      );
+      )
     })
-    .join("\n");
-};
+    .join("\n")
+}
 
 const getStateCode = (stateList: ComponentData["states"]) => {
   return stateList
@@ -63,10 +81,10 @@ const getStateCode = (stateList: ComponentData["states"]) => {
           /\{\$STATE_TYPE\}/g,
           type ? STATE_TYPE_TEMPLATE.replace(/\{\$TYPE\}/g, type) : ""
         )
-        .replace("{$DEFAULT}", defaultValue ?? "");
+        .replace("{$DEFAULT}", defaultValue ?? "")
     })
-    .join("\n");
-};
+    .join("\n")
+}
 
 const getTypeCode = (typeList: ComponentData["types"]) => {
   return typeList
@@ -74,10 +92,10 @@ const getTypeCode = (typeList: ComponentData["types"]) => {
       return TYPE_TEMPLATE.replace(/\{\$NAME\}/g, name).replace(
         /\{\$TYPE\}/g,
         type ?? ""
-      );
+      )
     })
-    .join("\n");
-};
+    .join("\n")
+}
 
 const getEventCode = (eventList: ComponentData["events"]) => {
   return eventList
@@ -93,10 +111,10 @@ const getEventCode = (eventList: ComponentData["events"]) => {
           returnType
             ? EVENT_RETURN_TYPE_TEMPLATE.replace(/\{\$TYPE\}/g, returnType)
             : ""
-        );
+        )
     })
-    .join("\n");
-};
+    .join("\n")
+}
 
 const getComponentCode = (componentData: ComponentData) => {
   return COMPONENT_TEMPLATE.replace(
@@ -106,9 +124,13 @@ const getComponentCode = (componentData: ComponentData) => {
     .replace(/\{\$NAME\}/g, convertUpperCamelCase(componentData.name))
     .replace(/\{\$SCSS_NAME\}/g, componentData.name)
     .replace(/\{\$DEFAULT\}/g, getInitialValue(componentData.props))
+    .replace(
+      /\{\$DESCRIPTION\}/g,
+      getDescriptionCode(componentData.description, componentData.props)
+    )
     .replace(/\{\$STATE\}/g, getStateCode(componentData.states))
     .replace(/\{\$EVENT\}/g, getEventCode(componentData.events))
-    .replace(/\{\$TYPE\}/g, getTypeCode(componentData.types));
-};
+    .replace(/\{\$TYPE\}/g, getTypeCode(componentData.types))
+}
 
-export { getComponentCode };
+export { getComponentCode }

@@ -1,6 +1,6 @@
-import { Icon, IconType } from '@/components/Other'
 import clsx from 'clsx'
 import { CSSProperties, ReactNode } from 'react'
+import { Icon, IconType } from '../../Other/Icon'
 import styles from './index.module.scss'
 
 interface Props {
@@ -24,6 +24,18 @@ interface Props {
   onClick?: () => void
 }
 
+/**
+ * アクションを促すシンプルなボタン
+ * @param children {ReactNode | undefined} ボタンのラベルを指定
+ * @param icon {IconType} アイコンを指定
+ * @param iconPosition {"prefix" | "suffix"} アイコンを挿入する位置を指定
+ * @param hasBorder {boolean} ボタンに枠線を入れるか否かを指定
+ * @param disabled {boolean} 非活性か否かを指定
+ * @param size {"small" | "medium" | "large"} ボタンのサイズを指定
+ * @param style {CSSProperty} style属性を直接入れたい時に指定
+ * @param className {string} CSSモジュールのクラスを指定
+ * @param onClick {() => void} クリックイベント
+ */
 const ActionButton = ({
   children,
   icon,
