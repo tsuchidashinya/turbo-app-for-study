@@ -1,25 +1,27 @@
-import styles from "./index.module.scss";
 // import clsx from 'clsx'
-import { useState } from "react";
-import { ColorAdditionPopup } from "../../../common/ColorAdditionPopup";
+import { ActionButton } from "@packages/ui-library"
+import { useState } from "react"
+import { changeFillColor } from "../../../../controller/actions/changeFillColor"
+import { Color, useStore } from "../../../../controller/state/slidePage"
+import { ColorAdditionPopup } from "../../../common/ColorAdditionPopup"
 
-interface Props {}
-
-const FillColorButton = ({}: Props) => {
-  const [isPopupOpen, setIsPopupOpen] = useState<boolean>();
+const FillColorButton = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  const { slidePageState, updateSlidePageState } = useStore((store) => store)
 
   const handleClick = (): void => {
-    // 処理を記述
-  };
+    setIsPopupOpen(true)
+  }
   const handleExecute = (color: Color): void => {
-    // 処理を記述
-  };
+    const newState = changeFillColor(slidePageState, { fillColor: color })
+    updateSlidePageState(newState)
+  }
   return (
-    <div className={styles.FillColorButton}>
-      {/** JSXを記述 **/}
-      <ColorAdditionPopup />
-    </div>
-  );
-};
+    <>
+      <ActionButton size="small" icon="fillColor" onClick={handleClick} />
+      {isPopupOpen && <ColorAdditionPopup onExecute={handleExecute} />}
+    </>
+  )
+}
 
-export { FillColorButton };
+export { FillColorButton }

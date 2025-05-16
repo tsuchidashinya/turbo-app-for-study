@@ -4,7 +4,7 @@ import { StrokeColorButton } from "./StrokeColorButton"
 
 const ShapeFunctionPanel = () => {
   return (
-    <div className={styles.ShapeFunctionPanel}>
+    <div className={styles["shape-function-panel"]}>
       <FillColorButton />
       <StrokeColorButton />
     </div>

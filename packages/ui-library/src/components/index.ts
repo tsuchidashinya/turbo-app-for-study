@@ -1,3 +1,4 @@
+export * from '../utils/hooks/useOutsideClick'
 export * from './Button'
 export * from './Input'
 export * from './Other'

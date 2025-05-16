@@ -1,4 +1,6 @@
-import sqlitePracticeExecute from "./sqlite";
+import executeClass from "./class"
+import sqlitePracticeExecute from "./sqlite"
 
-sqlitePracticeExecute();
+sqlitePracticeExecute()
 // executeError();
+executeClass()

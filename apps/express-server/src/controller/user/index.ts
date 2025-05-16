@@ -31,7 +31,7 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
   try {
     const { name, mail_address, password }: RequestRegisterUser = req.body
     await userRegisterUseCase.registerUser({ name, mailAddress: mail_address, password })
-    res.status(200).send(`User ${name} register succeeded`)
+    res.status(200).send(`User ${name} register suceeded`)
   } catch (e) {
     next(e)
   }

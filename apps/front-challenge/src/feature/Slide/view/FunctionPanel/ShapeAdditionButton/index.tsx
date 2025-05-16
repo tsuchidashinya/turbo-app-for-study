@@ -3,7 +3,7 @@ import styles from "./index.module.scss"
 import { ActionButton } from "@packages/ui-library"
 import { useState } from "react"
 import { changeMode } from "../../../controller/actions/changeMode"
-import { useStore } from "../../../controller/state"
+import { useStore } from "../../../controller/state/slidePage"
 import { ShapeAdditionPopup } from "./ShapeAdditionPopup"
 
 type ShapeType = "triangle" | "rectangle" | "circle"

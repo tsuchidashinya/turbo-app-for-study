@@ -1,6 +1,6 @@
 import { ActionButton } from "@packages/ui-library"
 import { changeMode } from "../../../controller/actions/changeMode"
-import { useStore } from "../../../controller/state"
+import { useStore } from "../../../controller/state/slidePage"
 
 const SelectButton = () => {
   const { slidePageState, updateSlidePageState } = useStore((store) => store)
